@@ -2,7 +2,7 @@ const model = require('../models/users.model')();
 
 const usersController = function () { }
 
-// CODE NON FIABLE => PAS MAJ = COPIE PERSON 
+// Afficher tous les users - ok 
 usersController.showAll = function (req, res, next) {
 
     model.find({}, (err, result) => {
@@ -11,11 +11,29 @@ usersController.showAll = function (req, res, next) {
         res.json({
             status: 200,
             result,
-            message: "Liste des users récupérée"
+            message: "Liste des utilisateurs récupérée"
         })
 
     });
 }
+
+// Ajouter un utilisateur - ok 
+usersController.save = function (req, res) {
+
+    const body = req.body;
+    body.status = false;
+
+    model.create(body, (err, result) => {
+        if (err) { console.log(err); }
+
+        res.json({
+            status: 200,
+            message: "Nouvel utilisateur créé."
+        });
+    });
+}
+
+// supprimer un utilisateur - en cours 
 
 // UsersController.edit = function (req, res) {
 
@@ -53,44 +71,6 @@ usersController.showAll = function (req, res, next) {
 //         res.redirect('/');
 
 //     });
-// }
 
-// UsersController.save = function (req, res, next) {
-
-//     if (req.body.txtId == 0) {
-
-//         var data = {
-//             nom: req.body.txtNom,
-//             prenom: req.body.txtPrenom
-//         };
-
-//         PersonneModel.savePerson(data, function (err, rows) {
-
-//             if (err) {
-//                 req.flash('error', 'There was error in inserting data');
-//             } else {
-//                 req.flash('success', 'Person added succesfully');
-//             }
-
-//             res.redirect('/');
-
-//         });
-//     }
-//     else {
-
-//         var data = {
-//             id: req.body.txtId,
-//             nom: req.body.txtNom,
-//             prenom: req.body.txtPrenom
-//         };
-
-//         PersonneModel.updatePerson(req.body.txtId, data, function (err, rows) {
-
-//             res.redirect('/');
-        
-
-//         });
-//     }
-// }
 
 module.exports = usersController;

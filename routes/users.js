@@ -6,9 +6,9 @@ const usersController = require('../controllers/users.controller');
 
 router.get('/showAll', usersController.showAll);
 
-// router.post('/add', usersController.save);
+router.post('/add', usersController.save);
 
-// router.get('/select/:id', usersController.edit);
+// router.get('/edit/:id', usersController.edit);
 
 // router.get('/delete/:id', usersController.delete);
 
