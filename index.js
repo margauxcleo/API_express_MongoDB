@@ -40,16 +40,16 @@ app.use((err, req, res, next) => {
 });
 
 // Appel du module router person.js
-const person = require('./routes/person');
+const users = require('./routes/users');
 
 // Appel des routes déclarées dans person,js à partir de la route /person
 // ...
-// http://localhost:8080/person
-// http://localhost:8080/person/add
-// http://localhost:8080/person/edit
-// http://localhost:8080/person/delete
-// http://localhost:8080/person/search
-app.use('/person', person);
+// http://localhost:8080/users
+// http://localhost:8080/users/add
+// http://localhost:8080/users/edit
+// http://localhost:8080/users/delete
+// http://localhost:8080/users/search
+app.use('/users', users);
 
 
 const server = {
