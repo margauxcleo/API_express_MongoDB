@@ -7,8 +7,8 @@ module.exports = function(){
     // mais étant donné qu'on est dans une structure en JSON avec Mongo, 
     // on a besoin d'établir le schéma de l'objet 
     const users = Schema({
-        nom: String,
         prenom: String,
+        nom: String,
         adresse: String,
         versionKey: false
     });
