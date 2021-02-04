@@ -8,7 +8,7 @@ router.get('/showAll', usersController.showAll);
 
 router.post('/add', usersController.save);
 
-// router.get('/edit/:id', usersController.edit);
+router.get('/edit/:id', usersController.edit);
 
 router.get('/delete/:id', usersController.delete);
 

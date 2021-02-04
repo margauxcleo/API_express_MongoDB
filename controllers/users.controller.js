@@ -48,26 +48,28 @@ usersController.delete = function (req, res) {
     });
 }
 
-// UsersController.edit = function (req, res) {
+// modifier un utilisateur - en cours 
+usersController.edit = function (req, res) {
 
-//     var id = req.params.id;
+    const id = req.params.id;
+    const body = req.body;
 
-//     PersonneModel.findPersonById(id, function (rows) {
+    model.updateOne({ _id: id }, {
+        $set: {
+            nom: body.nom,
+            prenom :body.prenom,
+            adresse: body.adresse
+        }
+    }, { multi: true }, (error, result) => {
+        if (error)
+            throw error;
 
-//         if(rows==null){
-//             req.flash('error','Sorry the company doesnot exists!!');
-//             res.redirect('/');
-//         }else{
-//             res.render('forms.ejs', {
-//                 personList: [],
-//                 txtId: rows[0].id,
-//                 txtNom: rows[0].nom,
-//                 txtPrenom: rows[0].prenom,
-//             });
-//         }
-
-//     });
-// }
+        res.json({
+            status: 200,
+            message: "Person updated successfully"
+        });
+    });
+}
 
 
 module.exports = usersController;
