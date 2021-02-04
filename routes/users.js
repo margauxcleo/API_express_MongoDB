@@ -10,7 +10,7 @@ router.post('/add', usersController.save);
 
 // router.get('/edit/:id', usersController.edit);
 
-// router.get('/delete/:id', usersController.delete);
+router.get('/delete/:id', usersController.delete);
 
 module.exports = router;
 

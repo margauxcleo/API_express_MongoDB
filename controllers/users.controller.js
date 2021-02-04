@@ -33,7 +33,20 @@ usersController.save = function (req, res) {
     });
 }
 
-// supprimer un utilisateur - en cours 
+// supprimer un utilisateur - ok
+usersController.delete = function (req, res) {
+
+    const id = req.params.id;
+
+    model.deleteOne({ _id: id }, (err, result) => {
+        if (err) { console.log(err); }
+        
+        res.json({
+            status: 200,
+            message: "Utilisateur supprimé."
+        });
+    });
+}
 
 // UsersController.edit = function (req, res) {
 
@@ -55,22 +68,6 @@ usersController.save = function (req, res) {
 
 //     });
 // }
-
-// UsersController.delete = function (req, res) {
-
-//     var id = req.params.id;
-
-//     PersonneModel.deletePerson(id, function (err, rows) {
-
-//         if (err) {
-//             req.flash('error', 'There was error in deleting data');
-//         } else {
-//             req.flash('success', 'Person deleted succesfully');
-//         }
-
-//         res.redirect('/');
-
-//     });
 
 
 module.exports = usersController;
