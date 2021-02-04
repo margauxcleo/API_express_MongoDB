@@ -37,4 +37,24 @@ app.use((err, req, res, next) => {
     const status = err.status || 500;
     res.status(status);
     res.render('error');
-  });
+});
+
+// Appel du module router person.js
+const person = require('./routes/person');
+
+// Appel des routes déclarées dans person,js à partir de la route /person
+// ...
+// http://localhost:8080/person
+// http://localhost:8080/person/add
+// http://localhost:8080/person/edit
+// http://localhost:8080/person/delete
+// http://localhost:8080/person/search
+app.use('/person', person);
+
+
+const server = {
+    port: 8080
+  };
+  
+  app.listen(server.port, () => console.log(`Server started, listening port: ${server.port}`));
+
