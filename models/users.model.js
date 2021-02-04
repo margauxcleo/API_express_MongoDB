@@ -9,7 +9,8 @@ module.exports = function(){
     const users = Schema({
         nom: String,
         prenom: String,
-        adresse: String
+        adresse: String,
+        versionKey: false
     });
 
     return db.model('users', users);
